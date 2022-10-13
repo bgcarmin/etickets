@@ -1,0 +1,37 @@
+[
+    {
+        "Name": "Koncert klasične muzike",
+        "Price": 25.50,
+        "PhotoUrl": "",
+        "DateTime": "05/08/2023 22:00",
+        "SeatId": 1
+    },
+    {
+        "Name": "Utakmica: Željezničar-Sarajevo",
+        "Price": 15.00,
+        "PhotoUrl": "",
+        "DateTime": "12/10/2023 15:00",
+        "SeatId": 2
+    },
+    {
+        "Name": "Koncert: Zetra",
+        "Price": 25.50,
+        "PhotoUrl": "",
+        "DateTime": "16/01/2024 15:00",
+        "SeatId": 3
+    },
+    {
+        "Name": "Koncert: Skenderija",
+        "Price": 10.00,
+        "PhotoUrl": "",
+        "DateTime": "09/08/2023 18:00",
+        "SeatId": 4
+    },
+    {
+        "Name": "Izložba fotografija",
+        "Price": 5.30,
+        "PhotoUrl": "",
+        "DateTime": "03/02/2024 13:00",
+        "SeatId": 5
+    }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "Id": 1,
+        "Section": "A",
+        "Number": 22
+    },
+    {
+        "Id": 2,
+        "Section": "B",
+        "Number": 12
+    },
+    {
+        "Id": 3,
+        "Section": "G",
+        "Number": 2
+    },
+    {
+        "Id": 4,
+        "Section": "F",
+        "Number": 58
+    },
+    {
+        "Id": 5,
+        "Section": "L",
+        "Number": 32
+    }
+]
