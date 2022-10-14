@@ -41,6 +41,7 @@ namespace API
             });
 
             services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }
 
         
