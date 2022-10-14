@@ -22,10 +22,13 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Number")
+                    b.Property<int>("AvailableNumber")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Section")
+                    b.Property<int>("TotalNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Type")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

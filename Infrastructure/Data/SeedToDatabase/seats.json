@@ -1,27 +1,32 @@
 [
     {
         "Id": 1,
-        "Section": "A",
-        "Number": 22
+        "Type": "Parter",
+        "TotalNumber": 225,
+        "AvailableNumber": 225
     },
     {
         "Id": 2,
-        "Section": "B",
-        "Number": 12
+        "Type": "Istok",
+        "TotalNumber": 4000,
+        "AvailableNumber": 4000
     },
     {
         "Id": 3,
-        "Section": "G",
-        "Number": 2
+        "Type": "VIP",
+        "TotalNumber": 250,
+        "AvailableNumber": 250
     },
     {
         "Id": 4,
-        "Section": "F",
-        "Number": 58
+        "Type": "Parter",
+        "TotalNumber": 2000,
+        "AvailableNumber": 2000
     },
     {
         "Id": 5,
-        "Section": "L",
-        "Number": 32
+        "Type": "None",
+        "TotalNumber": 60,
+        "AvailableNumber": 60
     }
 ]

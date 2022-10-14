@@ -7,7 +7,8 @@ namespace Core.Entities
 {
     public class Seat : BaseEntity
     {
-        public string Section { get; set; }
-        public int Number { get; set; }
+        public string Type { get; set; }
+        public int TotalNumber { get; set; }
+        public int AvailableNumber { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20221013221031_InitialCreate")]
+    [Migration("20221014130107_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,10 +24,13 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Number")
+                    b.Property<int>("AvailableNumber")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Section")
+                    b.Property<int>("TotalNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Type")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

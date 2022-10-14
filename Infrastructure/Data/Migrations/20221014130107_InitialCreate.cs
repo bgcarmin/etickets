@@ -14,8 +14,9 @@ namespace Infrastructure.Data.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Section = table.Column<string>(type: "TEXT", nullable: true),
-                    Number = table.Column<int>(type: "INTEGER", nullable: false)
+                    Type = table.Column<string>(type: "TEXT", nullable: true),
+                    TotalNumber = table.Column<int>(type: "INTEGER", nullable: false),
+                    AvailableNumber = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
