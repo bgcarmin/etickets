@@ -25,5 +25,29 @@ namespace Infrastructure.Data
         {
             return await _context.Set<T>().FindAsync(id);
         }
+
+        // sa specifikacijama
+
+        private IQueryable<T> ApplySpecification(ISpecification<T> specification)
+        {
+            // vraca se queryable sa upitom za tabelu
+            return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(), specification);
+        }
+
+        public async Task<T> GetEntityWithSpec(ISpecification<T> specification)
+        {
+            // vraca red sa poslanom specifikacijom
+            return await ApplySpecification(specification).FirstOrDefaultAsync();
+        }
+
+        public async Task<IReadOnlyList<T>> GetListWithSpec(ISpecification<T> specification)
+        {
+            return await ApplySpecification(specification).ToListAsync();
+        }
+
+        public async Task<int> CountWithSpec(ISpecification<T> specification)
+        {
+            return await ApplySpecification(specification).CountAsync();
+        }
     }
 }

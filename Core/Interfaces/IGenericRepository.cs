@@ -15,5 +15,10 @@ namespace Core.Interfaces
 
         // TODO ubuduce dodati za specifikaciju kad bude implementirana
 
+        Task<T> GetEntityWithSpec(ISpecification<T> specification);
+
+        Task<IReadOnlyList<T>> GetListWithSpec(ISpecification<T> specification);
+        Task<int> CountWithSpec(ISpecification<T> specification);
+
     }
 }
