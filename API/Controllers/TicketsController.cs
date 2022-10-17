@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
+using API.Exceptions;
+using API.Helpers;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
@@ -27,17 +29,22 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<TicketReturnDto>>> GetTickets() 
+        public async Task<ActionResult<IReadOnlyList<TicketReturnDto>>> GetTickets([FromQuery]TicketsParams ticketsParams) 
         {
             // return Ok(await _ticketRep.GetAllAsync());
 
             // kreiranje specifikacije
-            var specification = new TicketWithSeatSpecification();
+            var specification = new TicketWithSeatSpecification(ticketsParams);
+
+            var count = new TicketWithFilterCountSpecification(ticketsParams);
+
+            var totalNumberOfItems = await _ticketRep.CountWithSpec(count);
+
             var tickets = await _ticketRep.GetListWithSpec(specification);
 
             var returnTickets = _mapper.Map<IReadOnlyList<Ticket>,IReadOnlyList<TicketReturnDto>>(tickets);
 
-            return Ok(returnTickets);
+            return Ok(new Pagination<TicketReturnDto>(ticketsParams.PageNumber, ticketsParams.PageSize, totalNumberOfItems, returnTickets));
         }
 
         [HttpGet("{id}")]
@@ -45,6 +52,12 @@ namespace API.Controllers
         {
             var specification = new TicketWithSeatSpecification(id);
             var ticket = await _ticketRep.GetEntityWithSpec(specification);
+
+            // ako nije nadjen element
+            if(ticket == null)
+            {
+                return NotFound(new Response(404));
+            }
 
             var returnTicket = _mapper.Map<TicketReturnDto>(ticket);
 

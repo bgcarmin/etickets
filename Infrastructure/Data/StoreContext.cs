@@ -22,7 +22,23 @@ namespace Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            // za sqlite decimal problem prebaciti u double 
+            if(Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
+            {
+                foreach(var type in modelBuilder.Model.GetEntityTypes())
+                {
+                    var props = type.ClrType.GetProperties().Where(p => p.PropertyType == typeof(decimal));
+
+                    foreach(var prop in props)
+                    {
+                        modelBuilder.Entity(type.Name).Property(prop.Name).HasConversion<double>();
+                    }
+                }
+            }
         }
+
+
 
     }
 }

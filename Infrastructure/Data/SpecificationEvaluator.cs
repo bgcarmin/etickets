@@ -31,6 +31,12 @@ namespace Infrastructure.Data
                 query = query.OrderByDescending(specification.OrderByDescending);
             }
 
+            // ako je paging omogucen dodaje se skip i take 
+            if(specification.PagingEnabledFlag)
+            {
+                query = query.Skip(specification.Skip).Take(specification.Take);
+            }
+
             // dodaju se includes na query
             query = specification.Includes.Aggregate(query, (q, include) => q.Include(include));
 

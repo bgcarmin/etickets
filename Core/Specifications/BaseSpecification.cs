@@ -26,6 +26,12 @@ namespace Core.Specifications
 
         public Expression<Func<T, object>> OrderByDescending { get; private set; }
 
+        // properties za paging
+
+        public int Take { get; private set; }
+        public int Skip { get; private set; }
+        public bool PagingEnabledFlag { get; private set; }
+
 
         // dodavanje include u listu include-a
         protected void AddInclude(Expression<Func<T, object>> expression)
@@ -41,6 +47,15 @@ namespace Core.Specifications
         protected void AddOrderByDescending(Expression<Func<T, object>> expression)
         {
             OrderByDescending = expression;
+        }
+
+        // metoda za paging
+
+        protected void ApplyPaging(int skip, int take)
+        {
+            Skip = skip;
+            Take = take;
+            PagingEnabledFlag = true;
         }
     }
 }
