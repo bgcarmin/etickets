@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [Route("exceptions/{code}")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class ExceptionController : BaseApiController
     {
         public IActionResult Exception(int code)

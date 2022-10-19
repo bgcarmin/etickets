@@ -29,7 +29,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<TicketReturnDto>>> GetTickets([FromQuery]TicketsParams ticketsParams) 
+        public async Task<ActionResult<Pagination<TicketReturnDto>>> GetTickets([FromQuery]TicketsParams ticketsParams) 
         {
             // return Ok(await _ticketRep.GetAllAsync());
 
