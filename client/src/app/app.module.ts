@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from './core/core.module';
+import { StoreModule } from './store/store.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './navbar/navbar.component';
-import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
+// import { NavbarComponent } from './core/navbar/navbar.component';
+// import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxNavbarModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule,
+    StoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

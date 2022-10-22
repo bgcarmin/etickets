@@ -1,0 +1,14 @@
+<div class="card h-100 shadow-sm">
+    <img src="{{ticket.photoUrl}}" alt="{{ticket.name}}" class="img-fluid bg-info">
+    <div class="card-body d-flex flex-column">
+        <a class="text-decoration-none text-danger" href="">
+            <h6>{{ticket.name}}</h6>
+        </a>
+        <span class="mb-2">{{ticket.price | currency}}</span>
+    
+        <div class="btn-group mt-auto">
+            <button type="button" class="btn btn-outline-danger fa fa-shopping-cart me-2"></button>
+            <button type="button" class="btn btn-outline-danger">View</button>
+        </div>
+    </div>
+</div>

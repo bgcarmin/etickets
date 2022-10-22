@@ -67,6 +67,8 @@ namespace API
 
             app.UseCors("CorsPolicy");
 
+            app.UseStaticFiles();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

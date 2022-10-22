@@ -15,7 +15,8 @@ namespace API.Helpers
             CreateMap<Ticket,TicketReturnDto>()
             .ForMember(m => m.SeatLocation, n => n.MapFrom(f => f.Seat.Type))
             .ForMember(m => m.SeatTotalNumber, n => n.MapFrom(f => f.Seat.TotalNumber))
-            .ForMember(m => m.SeatAvailableNumber, n => n.MapFrom(f => f.Seat.AvailableNumber));
+            .ForMember(m => m.SeatAvailableNumber, n => n.MapFrom(f => f.Seat.AvailableNumber))
+            .ForMember(m => m.PhotoUrl, n => n.MapFrom<TicketUrlResolver>());
         }
     }
 }
