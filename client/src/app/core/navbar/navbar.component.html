@@ -6,8 +6,8 @@
         </button>
         <ngx-navbar-collapse #collapse="ngxNavbarCollapse">
             <ul class="navbar-nav me-auto">
-                <li><a href="#" class="nav-link">Home</a></li>
-                <li><a href="#" class="nav-link">Tickets</a></li>
+                <li><a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home</a></li>
+                <li><a [routerLink]="['/store']" routerLinkActive="active" class="nav-link">Tickets</a></li>
                 <li><a href="#" class="nav-link">About</a></li>
             </ul>
         </ngx-navbar-collapse>

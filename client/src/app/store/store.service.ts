@@ -41,4 +41,8 @@ export class StoreService {
   getSeats() {
     return this.httpClient.get<ISeat[]>(this.apiUrl + 'tickets/seats');
   }
+
+  getTicket(id: number) {
+    return this.httpClient.get<ITicket>(this.apiUrl + 'tickets/' + id);
+  }
 }

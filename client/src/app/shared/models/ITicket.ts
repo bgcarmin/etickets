@@ -1,4 +1,5 @@
 export interface ITicket {
+    id: number;
     name: string;
     seatLocation: string;
     seatTotalNumber: number;

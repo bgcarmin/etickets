@@ -3,17 +3,21 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { StoreComponent } from './store.component';
 import { TicketItemComponent } from './ticket-item/ticket-item.component';
+import { StoreRoutingModule } from './store-routing.module';
+import { TicketPageComponent } from './ticket-page/ticket-page.component';
 
 
 
 @NgModule({
   declarations: [
     StoreComponent,
-    TicketItemComponent
+    TicketItemComponent,
+    TicketPageComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    StoreRoutingModule
   ],
   exports: [
     StoreComponent

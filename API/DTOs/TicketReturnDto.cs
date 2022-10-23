@@ -7,6 +7,7 @@ namespace API.DTOs
 {
     public class TicketReturnDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string SeatLocation { get; set; }
         public int SeatTotalNumber { get; set; }

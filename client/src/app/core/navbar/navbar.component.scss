@@ -20,3 +20,9 @@
 .navbar-brand {
     font-family: 'pacifico', cursive;
 }
+
+a {
+    &.active {
+        color: white;
+    }
+}
