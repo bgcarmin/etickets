@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ITicket } from 'src/app/shared/models/ITicket';
+import { BreadcrumbService } from 'xng-breadcrumb';
 import { StoreService } from '../store.service';
 
 @Component({
@@ -11,7 +12,9 @@ import { StoreService } from '../store.service';
 export class TicketPageComponent implements OnInit {
   ticket: ITicket;
 
-  constructor(private storeService: StoreService, private aRoute: ActivatedRoute) { }
+  constructor(private storeService: StoreService, private aRoute: ActivatedRoute, private breadcrumbService: BreadcrumbService) {
+    this.breadcrumbService.set('@ticketPage', ' ')
+   }
 
   ngOnInit(): void {
     this.getProductById();
@@ -19,7 +22,10 @@ export class TicketPageComponent implements OnInit {
 
   getProductById() {
     this.storeService.getTicket(+this.aRoute.snapshot.paramMap.get('id')).subscribe({
-      next: (ticket) => this.ticket = ticket,
+      next: (ticket) => { 
+        this.ticket = ticket; 
+        this.breadcrumbService.set('@ticketPage', ticket.name); 
+      },
       error: (error) => console.log(error)
     })
   }

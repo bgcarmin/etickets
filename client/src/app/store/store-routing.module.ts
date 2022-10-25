@@ -5,7 +5,7 @@ import { TicketPageComponent } from './ticket-page/ticket-page.component';
 
 const routes: Routes = [
   {path: '', component: StoreComponent},
-  {path: ':id', component: TicketPageComponent}
+  {path: ':id', component: TicketPageComponent, data: {breadcrumb: {alias: 'ticketPage'}}}
 ];
 
 @NgModule({

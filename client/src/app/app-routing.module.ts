@@ -5,11 +5,11 @@ import { ServerErrorComponent } from './core/server-error/server-error.component
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'store', loadChildren: () => import('./store/store.module').then(m => m.StoreModule)},
-  {path: 'serverError', component: ServerErrorComponent},
-  {path: 'notFound', component: NotFoundComponent},
-  {path: '**', redirectTo: '', pathMatch: 'full'}
+  {path: '', component: HomeComponent, data: {breadcrumb: 'Home'}},
+  {path: 'store', loadChildren: () => import('./store/store.module').then(m => m.StoreModule), data: {breadcrumb: 'Store'}},
+  {path: 'serverError', component: ServerErrorComponent, data: {breadcrumb: 'Server Error'}},
+  {path: 'notFound', component: NotFoundComponent, data: {breadcrumb: 'Not Found'}},
+  {path: '**', redirectTo: 'notFound', pathMatch: 'full'}
 ];
 
 @NgModule({

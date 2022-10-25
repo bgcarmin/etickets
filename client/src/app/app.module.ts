@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 
 import { ExceptionInterceptor } from './core/interceptors/exception.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,12 @@ import { ExceptionInterceptor } from './core/interceptors/exception.interceptor'
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    NgxSpinnerModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ExceptionInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ExceptionInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

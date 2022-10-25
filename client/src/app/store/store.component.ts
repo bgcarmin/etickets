@@ -10,7 +10,7 @@ import { StoreService } from './store.service';
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent implements OnInit {
-  @ViewChild('search', {static: true}) searchWord: ElementRef;
+  @ViewChild('search', {static: false}) searchWord: ElementRef;
   ticketParams: TicketParams = new TicketParams();
   tickets: ITicket[];
   seats: ISeat[];

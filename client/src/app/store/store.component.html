@@ -1,6 +1,6 @@
 <div>
     <div class="row m-auto">
-        <section class="col-3 bg-light bg-gradient ps-4 border border-danger rounded-bottom">
+        <section class="col-3 bg-light bg-gradient ps-4 rounded-bottom">
             <h5 class="text-danger ms-2 mt-2">Sort</h5>
             <select class="form-select my-3" (change)="sortChange($event.target.value)">
                 <option *ngFor="let sort of sorts" [value]="sort.value">{{sort.name}}</option>

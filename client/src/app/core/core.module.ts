@@ -6,25 +6,30 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { ToastrModule } from 'ngx-toastr';
+import { BreadcrumbModule } from 'xng-breadcrumb';
+import { SubtitleComponent } from './subtitle/subtitle.component';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    SubtitleComponent
   ],
   imports: [
     NgxNavbarModule,
     CommonModule,
     RouterModule,
+    BreadcrumbModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       preventDuplicates: true
     })
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    SubtitleComponent
   ]
 })
 export class CoreModule { }
