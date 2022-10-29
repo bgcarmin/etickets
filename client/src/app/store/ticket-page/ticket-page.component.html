@@ -7,10 +7,10 @@
             <div>
                 <h4 class="pt-5">{{ticket.name}}</h4>
                 <div class="d-flex justify-content-start align-items-center pt-4">
-                    <i class="fa fa-minus-circle text-danger me-2" style="cursor: pointer; font-size: 2em;"></i>
-                    <span class="font-weight-bold" style="font-size: 1.5em;">1</span>
-                    <i class="fa fa-plus-circle text-danger mx-2" style="cursor: pointer; font-size: 2em;"></i>
-                    <button class="btn btn-outline-danger btn-lg ms-4">Add to Basket</button>
+                    <i (click)="decreaseQuantity()" class="fa fa-minus-circle text-danger me-2" style="cursor: pointer; font-size: 2em;"></i>
+                    <span class="font-weight-bold" style="font-size: 1.5em;">{{quantity}}</span>
+                    <i (click)="increaseQuantity()" class="fa fa-plus-circle text-danger mx-2" style="cursor: pointer; font-size: 2em;"></i>
+                    <button (click)="addTicketToBasket()" class="btn btn-outline-danger btn-lg ms-4">Add to Basket</button>
                 </div>
                 <p class="pt-4" style="font-size: 3em">{{ticket.price | currency}}</p>
             </div>

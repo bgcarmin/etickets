@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ITicket } from './shared/models/ITicket';
-import { HttpClient } from '@angular/common/http';
-import { IPaging } from './shared/models/IPaging';
+import { BasketService } from './basket/basket.service';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +8,19 @@ import { IPaging } from './shared/models/IPaging';
 })
 export class AppComponent implements OnInit {
   title = 'ETickets';
-  tickets: ITicket[];
   
-  constructor() {}
+  constructor(private basketService: BasketService) {}
   
   ngOnInit(): void {
     
-    // this.httpclient.get('https://localhost:5001/api/tickets?pageSize=50').subscribe({
-    //   next: (res: IPaging) => this.tickets = res.items,
-    //   error: (error) => console.log(error)
-    // }
-    // );
+    const basketId = localStorage.getItem('basket_id');
+    if(basketId) {
+      this.basketService.getBasket(basketId).subscribe({
+        next: () => {
+          console.log('basket has been created');
+        },
+        error: error => console.log(error)
+      })
+    }
   }
 }

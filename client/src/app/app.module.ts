@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExceptionInterceptor } from './core/interceptors/exception.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    HomeModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ExceptionInterceptor, multi: true},

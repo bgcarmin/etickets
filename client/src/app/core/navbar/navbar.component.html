@@ -12,9 +12,9 @@
             </ul>
         </ngx-navbar-collapse>
         <div class="d-flex align-items-center d-none d-md-flex">
-            <a class="position-relative">
+            <a routerLink='/basket' class="position-relative">
                 <i class="fa fa-shopping-cart fa-2x mr-5 text-white"></i>
-                <div class="cart-no">5</div>
+                <div class="cart-no" *ngIf="(basket | async) as basket">{{basket.items.length}}</div>
             </a>
             <a class="btn btn-outline-light ms-4 me-2" href="#">Login</a>
             <a class="btn btn-outline-light me-3" href="#">Sign up</a>

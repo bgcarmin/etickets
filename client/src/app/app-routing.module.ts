@@ -9,6 +9,8 @@ const routes: Routes = [
   {path: 'store', loadChildren: () => import('./store/store.module').then(m => m.StoreModule), data: {breadcrumb: 'Store'}},
   {path: 'serverError', component: ServerErrorComponent, data: {breadcrumb: 'Server Error'}},
   {path: 'notFound', component: NotFoundComponent, data: {breadcrumb: 'Not Found'}},
+  {path: 'basket', loadChildren: () => import('./basket/basket.module').then(m => m.BasketModule), data: {breadcrumb: 'Basket'}},
+  {path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule), data: {breadcrumb: 'Checkout'}},
   {path: '**', redirectTo: 'notFound', pathMatch: 'full'}
 ];
 
