@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Entities.Identity;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Infrastructure.Identity;
 
 namespace API
 {
@@ -26,6 +29,11 @@ namespace API
                     await context.Database.MigrateAsync();
                     // seeding
                     await ContextSeed.SeedAsync(context, loggerFactory);
+
+                    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+                    var indentityDbContext = services.GetRequiredService<AppIdentityDbContext>();
+                    await indentityDbContext.Database.MigrateAsync();
+                    await IdentityDbContextSeed.SeedUsersAsync(userManager);
                 }
                 catch(Exception exception)
                 {

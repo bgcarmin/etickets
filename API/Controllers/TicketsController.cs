@@ -9,6 +9,7 @@ using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -66,6 +67,7 @@ namespace API.Controllers
         }
 
         [HttpGet("seats")]
+        // [Authorize]
         public async Task<ActionResult<IReadOnlyList<Seat>>> GetSeats()
         {
             return Ok(await _seatRep.GetAllAsync());
