@@ -19,6 +19,8 @@ namespace API.Helpers
             .ForMember(m => m.SeatAvailableNumber, n => n.MapFrom(f => f.Seat.AvailableNumber))
             .ForMember(m => m.PhotoUrl, n => n.MapFrom<TicketUrlResolver>());
             CreateMap<Address, AddressDto>().ReverseMap();
+            CreateMap<UserBasketDto, UserBasket>();
+            CreateMap<BasketItemDto, BasketItem>();
         }
     }
 }
