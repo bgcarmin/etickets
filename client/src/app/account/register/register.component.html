@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-3">
+        <form [formGroup]="registerForm" (ngSubmit)="submit()">
+            <div class="text-center mb-4">
+              <!-- <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+              <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            </div>
+
+            <div class="form-label-group">
+                <input formControlName="displayName" type="displayName" id="inputDisplayName" class="form-control" placeholder="Display Name">
+                <label for="inputDisplayName">Display Name</label>
+                <span class="text-danger" *ngIf="registerForm.get('displayName').invalid && registerForm.get('displayName').touched
+                && registerForm.get('displayName').errors['required']">Display Name is required
+                </span>
+            </div>
+
+            <div class="form-label-group">
+                <input formControlName="email" type="email" id="inputEmail" class="form-control" placeholder="Email">
+                <label for="inputEmail">Email</label>
+                <span class="text-danger" *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched
+                && registerForm.get('email').errors['required']">Email address is required
+                </span>
+                <span class="text-danger" *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched
+                && registerForm.get('email').errors['pattern']">Email address is not valid
+                </span>
+            </div>
+
+            <div class="form-label-group">
+                <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Password">
+                <label for="inputPassword">Password</label>
+                <span class="text-danger" *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched
+                && registerForm.get('password').errors['required']">Password is required
+                </span>
+                <span class="text-danger" *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched
+                && registerForm.get('password').errors['pattern']">Email address is not valid
+                </span>
+            </div>
+
+            <!-- <span *ngIf="registerForm.get('email').checkIfEmailRegistered">Email address is already in use</span> -->
+            <ul class="text-danger list-unstyled" *ngIf="errors">
+              <li>{{errors}}</li>
+          </ul>
+        
+        <button [disabled]="registerForm.invalid" class="btn btn-lg btn-danger btn-block" type="submit">Register</button>
+            <p class="mt-5 mb-3 text-muted text-center">© 2017-2022</p>
+          </form>
+    </div>
+
+    <!-- <div class="col-4">
+      <p>From Status: {{loginForm.status}}</p>
+      <p>Email Status: {{loginForm.get('email').status}}</p>
+      <p>Email Touched: {{loginForm.get('email').touched}}</p>
+      <p>Email Dirty: {{loginForm.get('email').dirty}}</p>
+      <pre>{{loginForm.value | json}}</pre>
+    </div> -->
+</div>
+

@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'notFound', component: NotFoundComponent, data: {breadcrumb: 'Not Found'}},
   {path: 'basket', loadChildren: () => import('./basket/basket.module').then(m => m.BasketModule), data: {breadcrumb: 'Basket'}},
   {path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule), data: {breadcrumb: 'Checkout'}},
+  {path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule), data: {breadcrumb: 'Account'}},
   {path: '**', redirectTo: 'notFound', pathMatch: 'full'}
 ];
 

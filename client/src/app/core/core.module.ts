@@ -8,6 +8,7 @@ import { ServerErrorComponent } from './server-error/server-error.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { SubtitleComponent } from './subtitle/subtitle.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { SubtitleComponent } from './subtitle/subtitle.component';
     NgxNavbarModule,
     CommonModule,
     RouterModule,
+    SharedModule,
     BreadcrumbModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
