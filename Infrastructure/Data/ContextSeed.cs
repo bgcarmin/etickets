@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Entities.Order;
 using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Data
@@ -41,6 +42,22 @@ namespace Infrastructure.Data
                     foreach(var item in tickets) 
                     {
                         context.Tickets.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
+                if(!context.DeliveryMethods.Any())
+                {
+                    // citaju se podaci iz json filea
+                    var deliveryFile = File.ReadAllText("../Infrastructure/Data/SeedToDatabase/deliveryMethods.json");
+                    // dobija se lista podataka
+                    var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryFile);
+
+                    // dodaje se svaki element u bazu
+                    foreach(var item in methods) 
+                    {
+                        context.DeliveryMethods.Add(item);
                     }
 
                     await context.SaveChangesAsync();

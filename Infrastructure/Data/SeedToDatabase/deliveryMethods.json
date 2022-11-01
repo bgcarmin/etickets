@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "ShortName": "DHL",
+    "Description": "Fastest delivery time",
+    "DeliveryTime": "1-2 Days",
+    "Price": 10
+  },
+  {
+    "Id": 2,
+    "ShortName": "FDL",
+    "Description": "Get it within 5 days",
+    "DeliveryTime": "2-5 Days",
+    "Price": 7
+  },
+  {
+    "Id": 3,
+    "ShortName": "STND",
+    "Description": "Slower but cheap",
+    "DeliveryTime": "7-10 Days",
+    "Price": 3
+  },
+  {
+    "Id": 4,
+    "ShortName": "FREE",
+    "Description": "Free! Very slow",
+    "DeliveryTime": "1-3 Weeks",
+    "Price": 0
+  }
+]

@@ -19,6 +19,11 @@ namespace Core.Interfaces
 
         Task<IReadOnlyList<T>> GetListWithSpec(ISpecification<T> specification);
         Task<int> CountWithSpec(ISpecification<T> specification);
+        
+        // za unit of work
+        void Add(T entity);
+        void Update(T entity);
+        void Delete(T entity);
 
     }
 }

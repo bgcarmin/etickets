@@ -10,13 +10,13 @@ import { AccountService } from '../account.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  urlToReturn: string;
+  returnUrl: string;
   errors: string;
 
   constructor(private accountService: AccountService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.urlToReturn = this.activatedRoute.snapshot.queryParams.urlToReturn || '/shop';
+    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/shop';
     this.createLogin();
   }
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   submit() {
     this.accountService.login(this.loginForm.value).subscribe({
       next: () => {
-        this.router.navigateByUrl(this.urlToReturn);
+        this.router.navigateByUrl(this.returnUrl);
       },
       error: error => {
         console.log(error.error.message);
