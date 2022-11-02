@@ -6,6 +6,9 @@ import { PagingHeaderComponent } from './components/paging-header/paging-header.
 import { OrderSumComponent } from './components/order-sum/order-sum.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import { StepperComponent } from './components/stepper/stepper.component';
+import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component'
 
 
 
@@ -13,13 +16,16 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     PagingComponent,
     PagingHeaderComponent,
-    OrderSumComponent
+    OrderSumComponent,
+    StepperComponent,
+    BasketSummaryComponent
   ],
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CdkStepperModule
   ],
   exports: [
     PaginationModule,
@@ -27,7 +33,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     PagingHeaderComponent,
     OrderSumComponent,
     BsDropdownModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CdkStepperModule,
+    BasketSummaryComponent,
+    StepperComponent
   ]
 })
 export class SharedModule { }

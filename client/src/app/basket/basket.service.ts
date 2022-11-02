@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Basket, IBasket, IBasketItem, IBasketSum } from '../shared/models/basket';
+import { IDeliveryMethod } from '../shared/models/IDeliveryMethod';
 import { ITicket } from '../shared/models/ITicket';
 
 @Injectable({
@@ -14,6 +15,7 @@ export class BasketService {
   basket$ = this.basketSource.asObservable();
   private basketTotalSum = new BehaviorSubject<IBasketSum>(null);
   basketSum$ = this.basketTotalSum.asObservable();
+  shipping = 0;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -89,6 +91,17 @@ export class BasketService {
       },
       error: error => console.log(error)
     });
+  }
+
+  deleteBasketLocally(id: string) {
+    this.basketSource.next(null);
+    this.basketTotalSum.next(null);
+    localStorage.removeItem('basket_id');
+  }
+
+  setShippingPrice(del: IDeliveryMethod) {
+    this.shipping = del.price;
+    this.getTotals();
   }
 
   private getTotals() {

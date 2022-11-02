@@ -1,0 +1,83 @@
+<div class="mt-4" [formGroup]="checkoutForm">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4>Shipping address</h4>
+        <button 
+            (click)="saveAddress()" 
+            class="btn btn-outline-success mb-3"
+            [disabled]="!checkoutForm.get('addressForm').valid || !checkoutForm.get('addressForm').dirty"
+        >
+            Save as default address
+        </button>
+    </div>
+    <div class="row" formGroupName="addressForm">
+        <div class="form-group col-6">
+            
+            <div class="form-label-group">
+                <input formControlName="firstName" type="firstName" id="inputFirstName" class="form-control" placeholder="First Name">
+                <label for="inputDisplayName">First Name</label>
+                <span class="text-danger" *ngIf="checkoutForm.get('addressForm').get('firstName').invalid && checkoutForm.get('addressForm').get('firstName').touched">
+                    Display Name is required
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            
+            <div class="form-label-group">
+                <input formControlName="lastName" type="lastName" id="inputLastName" class="form-control" placeholder="Last Name">
+                <label for="inputLastName">Last Name</label>
+                <span class="text-danger" *ngIf="checkoutForm.get('addressForm').get('lastName').invalid && checkoutForm.get('addressForm').get('lastName').touched">
+                    Last Name is required
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            
+            <div class="form-label-group">
+                <input formControlName="street" type="street" id="inputStreet" class="form-control" placeholder="Street">
+                <label for="inputStreet">Street</label>
+                <span class="text-danger" *ngIf="checkoutForm.get('addressForm').get('street').invalid && checkoutForm.get('addressForm').get('street').touched">
+                    Street is required
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            
+            <div class="form-label-group">
+                <input formControlName="city" type="city" id="inputCity" class="form-control" placeholder="City">
+                <label for="inputCity">City</label>
+                <span class="text-danger" *ngIf="checkoutForm.get('addressForm').get('city').invalid && checkoutForm.get('addressForm').get('city').touched">
+                    City is required
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            
+            <div class="form-label-group">
+                <input formControlName="country" type="country" id="inputCountry" class="form-control" placeholder="Country">
+                <label for="inputCountry">Country</label>
+                <span class="text-danger" *ngIf="checkoutForm.get('addressForm').get('country').invalid && checkoutForm.get('addressForm').get('country').touched">
+                    Country is required
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            
+            <div class="form-label-group">
+                <input formControlName="zipCode" type="zipCode" id="inputZipCode" class="form-control" placeholder="Zip Code">
+                <label for="inputZipCode">Zip Code</label>
+                <span class="text-danger" *ngIf="checkoutForm.get('addressForm').get('zipCode').invalid && checkoutForm.get('addressForm').get('zipCode').touched">
+                    Zip Code is required
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="float-none d-flex justify-content-between flex-column flex-lg-row mb-5">
+    <button class="btn btn-outline-danger" routerLink="/basket">
+        <i class="fa fa-angle-left"></i> Back to basket
+    </button>
+    <button class="btn btn-danger" cdkStepperNext>
+        Go to delivery <i class="fa fa-angle-right"></i>
+    </button>
+</div>

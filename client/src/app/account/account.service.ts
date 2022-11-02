@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, of, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IAddress } from '../shared/models/IAddress';
 import { IUser } from '../shared/models/IUser';
 
 @Injectable({
@@ -60,5 +61,13 @@ export class AccountService {
         this.currentUserSource.next(u);
       })
     );
+  }
+
+  updateUserAddress(address: IAddress) {
+    return this.httpClient.put<IAddress>(this.apiUrl + 'account/address', address);
+  }
+
+  getUserAddress() {
+    return this.httpClient.get<IAddress>(this.apiUrl + 'account/address');
   }
 }

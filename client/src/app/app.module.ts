@@ -15,6 +15,7 @@ import { ExceptionInterceptor } from './core/interceptors/exception.interceptor'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { HomeModule } from './home/home.module';
+import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HomeModule } from './home/home.module';
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ExceptionInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
