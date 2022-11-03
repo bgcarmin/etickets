@@ -17,7 +17,11 @@
             </app-stepper>
         </div>
         <div class="col-4">
-            <app-order-sum></app-order-sum>
+            <app-order-sum
+                [shippingPrice]="(basketSum | async).shipping"
+                [subtotal]="(basketSum | async).subtotal"
+                [sum]="(basketSum | async).sum"
+            ></app-order-sum>
         </div>
     </div>
 </div>

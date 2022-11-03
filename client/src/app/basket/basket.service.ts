@@ -101,7 +101,11 @@ export class BasketService {
 
   setShippingPrice(del: IDeliveryMethod) {
     this.shipping = del.price;
+    const basket = this.getCurrentBasket();
+    basket.deliveryMethod = del.id;
+    basket.shippingPrice = del.price;
     this.getTotals();
+    this.setBasket(basket);
   }
 
   private getTotals() {

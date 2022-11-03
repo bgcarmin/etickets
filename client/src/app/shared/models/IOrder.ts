@@ -14,11 +14,11 @@ export interface IOrder {
   }
 
   export interface IOrderItem {
-    ticketId: number
-    ticketName: string
-    photoUrl: string
-    price: number
-    quantity: number
+    ticketId: number;
+    ticketName: string;
+    photoUrl: string;
+    price: number;
+    quantity: number;
   }
 
   export interface IOrderToCreate {

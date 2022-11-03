@@ -2,18 +2,18 @@
     Details
 </div>
 <div class="p-4">
-    <ul class="list-unstyled mb-4" *ngIf="(basketSum | async)">
+    <ul class="list-unstyled mb-4">
         <li class="d-flex justify-content-between py-3 border-bottom">
             <div class="text-muted">Subtotal</div>
-            <div>{{(basketSum | async).subtotal | currency}}</div>
+            <div>{{ subtotal | currency}}</div>
         </li>
         <li class="d-flex justify-content-between py-3 border-bottom">
             <div class="text-muted">Shipping</div>
-            <div>{{(basketSum | async).shipping | currency}}</div>
+            <div>{{ shippingPrice | currency}}</div>
         </li>
         <li class="d-flex justify-content-between py-3 border-bottom">
             <strong class="text-muted">Sum</strong>
-            <strong>{{(basketSum | async).sum | currency}}</strong>
+            <strong>{{ sum | currency}}</strong>
         </li>
     </ul>
 </div>
