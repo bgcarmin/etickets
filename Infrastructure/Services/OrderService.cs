@@ -12,12 +12,14 @@ namespace Infrastructure.Services
 {
     public class OrderService : IOrderService
     {
+        private readonly IPaymentService _paymentService;
         
         private readonly IBasketRepository _basketRepo;
         private readonly ILogger<OrderService> _logger;
         private readonly IUnitOfWork _unitOfWork;
-        public OrderService(IUnitOfWork unitOfWork, IBasketRepository basketRepo, ILogger<OrderService> logger)
+        public OrderService(IUnitOfWork unitOfWork, IBasketRepository basketRepo, ILogger<OrderService> logger, IPaymentService paymentService)
         {
+            _paymentService = paymentService;
             _unitOfWork = unitOfWork;
             _logger = logger;
             _basketRepo = basketRepo;
@@ -45,7 +47,16 @@ namespace Infrastructure.Services
             // _logger.LogInformation("proslo delivery");
             var subtotal = orderTickets.Sum(o => o.Price * o.Quantity);
 
-            var order = new Order(email, shippingAddress, delMethod, orderTickets, subtotal);
+            var spec = new OrderByPaymentIntentIdSpecification(basket.PaymentIntentId);
+            var existingOrder = await _unitOfWork.Repository<Order>().GetEntityWithSpec(spec);
+
+            if(existingOrder != null)
+            {
+                _unitOfWork.Repository<Order>().Delete(existingOrder);
+                await _paymentService.CreateOrUpdatePaymentIntent(basket.PaymentIntentId);
+            }
+
+            var order = new Order(email, shippingAddress, delMethod, orderTickets, subtotal, basket.PaymentIntentId);
             // _logger.LogInformation("proslo order");
 
             _unitOfWork.Repository<Order>().Add(order);
@@ -56,7 +67,7 @@ namespace Infrastructure.Services
                 return null;
             }
 
-            await _basketRepo.DeleteUserBasketAsync(basketId);
+            // await _basketRepo.DeleteUserBasketAsync(basketId);
 
             return order;
         }

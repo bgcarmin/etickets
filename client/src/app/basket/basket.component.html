@@ -22,7 +22,7 @@
                     <div class="col-6 offset-6">
                         <app-order-sum
                             *ngIf="(basketSum | async)"
-                            [shippingPrice]="(basketSum | async).shipping"
+                            [shippingPrice]="(basketSum | async).shippingPrice"
                             [subtotal]="(basketSum | async).subtotal"
                             [sum]="(basketSum | async).sum"
                         ></app-order-sum>

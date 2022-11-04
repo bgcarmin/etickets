@@ -21,5 +21,9 @@ button.nav-link {
         
     }
 
+    &:disabled:not(.active) {
+        background: #e9ecef;
+    }
+
 }
 

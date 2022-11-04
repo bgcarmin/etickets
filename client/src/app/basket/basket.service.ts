@@ -24,6 +24,7 @@ export class BasketService {
       map((basket: IBasket) => {
         this.basketSource.next(basket);
         console.log(this.getCurrentBasket());
+        this.shipping = basket.shippingPrice;
         this.getTotals();
       })
     );
@@ -37,6 +38,15 @@ export class BasketService {
       },
       error: error => console.log(error)
     });
+  }
+
+  createPaymentIntent() {
+    return this.httpClient.post(this.apiUrl + 'payments/' + this.getCurrentBasket().id, {}).pipe(
+      map( (basket: IBasket) => {
+        this.basketSource.next(basket);
+        console.log(this.getCurrentBasket());
+      })
+    );
   }
 
   getCurrentBasket() {
@@ -110,10 +120,10 @@ export class BasketService {
 
   private getTotals() {
     const currentBasket = this.getCurrentBasket();
-    const shipping = 0;
+    const shippingPrice = this.shipping;
     const subtotal = currentBasket.items.reduce( (x,y) => (y.price * y.quantity) + x, 0);
-    const sum = subtotal + shipping;
-    this.basketTotalSum.next({shipping, subtotal, sum});
+    const sum = subtotal + shippingPrice;
+    this.basketTotalSum.next({shippingPrice, subtotal, sum});
   }
 
   private mapTicketToBasketItem(ticket: ITicket, quantity: number): IBasketItem {
