@@ -6,4 +6,11 @@ export interface IPaging {
     count: number;
     items: ITicket[];
   }
+
+  export class Paging implements IPaging {
+    pageNumber: number;
+    pageSize: number;
+    count: number;
+    items: ITicket[] = [];
+  }
   

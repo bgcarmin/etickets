@@ -5,7 +5,7 @@ import { PagingComponent } from './components/paging/paging.component';
 import { PagingHeaderComponent } from './components/paging-header/paging-header.component';
 import { OrderSumComponent } from './components/order-sum/order-sum.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component'
@@ -25,6 +25,7 @@ import { BasketSummaryComponent } from './components/basket-summary/basket-summa
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
     CdkStepperModule
   ],
   exports: [
@@ -34,6 +35,7 @@ import { BasketSummaryComponent } from './components/basket-summary/basket-summa
     OrderSumComponent,
     BsDropdownModule,
     ReactiveFormsModule,
+    FormsModule,
     CdkStepperModule,
     BasketSummaryComponent,
     StepperComponent

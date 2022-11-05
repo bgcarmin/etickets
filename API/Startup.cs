@@ -54,6 +54,7 @@ namespace API
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
                 });
             });
+            services.AddSingleton<ICacheService, CacheService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPaymentService, PaymentService>();

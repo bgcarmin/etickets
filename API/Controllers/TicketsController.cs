@@ -29,6 +29,7 @@ namespace API.Controllers
             
         }
 
+        [Cache(500)]
         [HttpGet]
         public async Task<ActionResult<Pagination<TicketReturnDto>>> GetTickets([FromQuery]TicketsParams ticketsParams) 
         {
@@ -48,6 +49,7 @@ namespace API.Controllers
             return Ok(new Pagination<TicketReturnDto>(ticketsParams.PageNumber, ticketsParams.PageSize, totalNumberOfItems, returnTickets));
         }
 
+        [Cache(500)]
         [HttpGet("{id}")]
         public async Task<ActionResult<TicketReturnDto>> GetTicket(int id)
         {
@@ -66,6 +68,7 @@ namespace API.Controllers
             // return Ok(await _ticketRep.GetByIdAsync(id));
         }
 
+        [Cache(500)]
         [HttpGet("seats")]
         // [Authorize]
         public async Task<ActionResult<IReadOnlyList<Seat>>> GetSeats()

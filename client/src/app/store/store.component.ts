@@ -11,7 +11,7 @@ import { StoreService } from './store.service';
 })
 export class StoreComponent implements OnInit {
   @ViewChild('search', {static: false}) searchWord: ElementRef;
-  ticketParams: TicketParams = new TicketParams();
+  ticketParams: TicketParams;
   tickets: ITicket[];
   seats: ISeat[];
   count: Number;
@@ -21,19 +21,19 @@ export class StoreComponent implements OnInit {
     {name: 'High to Low Price', value: 'priceDesc'}
     ]
 
-  constructor(private storeService: StoreService) { }
+  constructor(private storeService: StoreService) { 
+    this.ticketParams = this.storeService.getTicketParams();
+  }
 
   ngOnInit(): void {
-    this.getTickets();
+    this.getTickets(true);
     this.getSeats();
   }
 
-  getTickets() {
-    this.storeService.getTickets(this.ticketParams).subscribe({
+  getTickets(useCache = false) {
+    this.storeService.getTickets(useCache).subscribe({
       next: (res) => {
         this.tickets = res.items;
-        this.ticketParams.pageNumber = res.pageNumber;
-        this.ticketParams.pageSize = res.pageSize;
         this.count = res.count;
       },
       error: (error) => console.log(error)
@@ -50,31 +50,41 @@ export class StoreComponent implements OnInit {
   }
 
   sortChange(sortType: string) {
-    this.ticketParams.sort = sortType;
+    const params = this.storeService.getTicketParams();
+    params.sort = sortType;
+    this.storeService.setTicketParams(params);
     this.getTickets();
   }
 
   seatFilter(seatId: number) {
-    this.ticketParams.seatId = seatId;
+    const params = this.storeService.getTicketParams();
+    params.seatId = seatId;
+    params.pageNumber = 1;
+    this.storeService.setTicketParams(params);
     this.getTickets();
   }
 
   searchFilter() {
-    this.ticketParams.search = this.searchWord.nativeElement.value;
-    this.ticketParams.pageNumber = 1;
+    const params = this.storeService.getTicketParams();
+    params.search = this.searchWord.nativeElement.value;
+    params.pageNumber = 1;
+    this.storeService.setTicketParams(params);
     this.getTickets();
   }
 
   resetFilter() {
     this.searchWord.nativeElement.value = '';
     this.ticketParams = new TicketParams();
+    this.storeService.setTicketParams(this.ticketParams);
     this.getTickets();
   }
 
   pageChangeAction(event: any) {
-    if(this.ticketParams.pageNumber !== event) {
-      this.ticketParams.pageNumber = event;
-      this.getTickets();
+    const params = this.storeService.getTicketParams();
+    if(params.pageNumber !== event) {
+      params.pageNumber = event;
+      this.storeService.setTicketParams(params);
+      this.getTickets(true);
     }
   }
 

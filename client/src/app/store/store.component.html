@@ -3,7 +3,9 @@
         <section class="col-3 bg-light bg-gradient ps-4 rounded-bottom">
             <h5 class="text-danger ms-2 mt-2">Sort</h5>
             <select class="form-select my-3" (change)="sortChange($event.target.value)">
-                <option *ngFor="let sort of sorts" [value]="sort.value">{{sort.name}}</option>
+                <option *ngFor="let sort of sorts" 
+                    [selected]="ticketParams.sort === sort.value" 
+                    [value]="sort.value">{{sort.name}}</option>
             </select>
 
             <h5 class="text-danger ms-2">Seats</h5>
@@ -33,6 +35,7 @@
             <div class="d-flex justify-content-center" *ngIf="count > 0">
                 <app-paging [pageSizeB]="ticketParams.pageSize"
                             [count]="count"
+                            [pageNumber]="ticketParams.pageNumber"
                             (pageChanged)="pageChangeAction($event)"></app-paging>
             </div>
         </section>
