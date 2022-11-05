@@ -19,3 +19,4 @@
 - JWT authentication
 - Angular Routing i Lazy Loading
 - Stripe sistem za plaćanje
+- Redis
